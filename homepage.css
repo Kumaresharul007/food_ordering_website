@@ -1,0 +1,67 @@
+.last{
+    margin-left: auto;
+}
+.hero{
+    background: rgba(0, 0, 0, 0.7) url(banner.jpg);
+    background-size: cover;
+    height: 80vh;
+    background-blend-mode: darken;
+    
+}
+#link{
+    color: white;
+    font-size: 20px;
+}
+#link:hover{
+    color: green;
+    transition: 0.3s;
+    transform: perspective(3000px) translateZ(300px);
+}
+.account{
+    float: right;
+}
+.account button{
+    margin-right: 20px;
+}
+.account a{
+    margin-right: 20px;
+}
+.hero_form input{
+    height: 60px;
+    width: 50%;
+}
+.hero_form i{
+    color: white;
+    font-size: 25px;
+    background-color: blue;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 100px;
+}
+.hero_form button{
+    border: none;
+    background: none;
+}
+.categories{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.categories .card{
+    margin: 50px;
+}
+footer{
+    background-color: grey;
+    padding: 50px;
+}
+footer a{
+    text-decoration: none;
+    color: white;
+}
+footer h3{
+    color: white;
+    padding-bottom: 30px;
+}
+.social a{
+    margin: 20px;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOODIE - Veg foods</title>
+  <link href="myorders.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+
+<?php
+    session_start();
+    if(isset($_POST["submit"])){
+      unset($_SESSION["success"]);
+      header("location: homepage.php");
+    }
+    else if(!isset($_SESSION["success"])){
+        header("location: login.php");
+    }
+?>
+<?php
+    if(isset($_POST["remove"])){
+      unset($_SESSION["orders"]);
+    }
+?>
+<body>
+  <div class="hero">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><span
+            style="font-size: 35px;color: red; font-weight: bolder;">FOODIE</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="last navbar-nav">
+            <li class="nav-item">
+              <a id="link" class="nav-link active" aria-current="page" href="homepage.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="link" class="nav-link active" href="myorders.php">My orders</a>
+            </li>
+            <li class="nav-item">
+              <a id="link" class="nav-link active" href="cart.php">My cart</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="account btn-group">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <?php echo $_SESSION["mail"]; ?>
+      </button>
+      <ul class="dropdown-menu">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+          <input class="dropdown-item" type="submit" name="submit" value="Log out">
+        </form>
+      </ul>
+    </div>
+    <div align="center">
+      <div style="margin-top: 100px;" class="row">
+        <h1 style="color: darkorange;">ORDERED DISHES:</h1>
+      </div>
+    </div>
+  </div><br>
+  <?php if(isset($_SESSION["orders"])){ ?>
+  <form align="center" action="myorders.php" method="post">
+      <input class="btn btn-secondary" type="submit" name="remove" value="Delete orders history">
+  </form><br>
+  <?php
+      $arr2 = $_SESSION["orders"];
+      include("database.php");?>
+  <div class="container orders">    
+    <?php
+      for($j=1; $j<count($arr2); $j++){
+      $sql = "SELECT * FROM dishes_2 WHERE name='$arr2[$j]'";
+      $execute = mysqli_query($conn, $sql);
+      if($execute){ 
+        while($i = mysqli_fetch_array($execute)){
+            $dishname = $i["name"];
+            $dishimage = $i["image"];
+            $dishprice = $i["price"];
+    ?>
+    <div class="card" style="width: 20rem;">
+      <a href="dishdetail.php?name=<?php echo $dishname; ?>"><img class="card-img-top" src="<?php echo $dishimage; ?>" alt="Card image cap"></a><br>
+      <div class="card-body">
+        <h5 class="card-title">
+          <?php echo $dishname; ?><br><br>
+          <div style="color: darkorange;">
+            <?php echo "₹ ".$dishprice; ?>
+          </div>
+        </h5>
+      </div>
+    </div>
+    <?php
+        }
+      }
+      $j++;
+      }
+  ?>
+  </div>
+  <?php } ?>
+  <?php if(!isset($_SESSION["orders"])){ ?>
+    <h3 align="center" style="color: red;">You didn't order anything yet!</h3><br>
+    <div align="center">
+    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_vsaoi7iz.json"  background="transparent" speed="1" style="width: 500px; height: 500px;" loop autoplay></lottie-player><br>
+    <a href="homepage.php" class="btn btn-outline-success">Shop now</a><br><br><br>
+    </div>
+  <?php } ?>
+
+  
+  <footer>
+    <div class="row">
+      <div class="col-md-3">
+        <h3>Your account:</h3>
+        <h5><a href="login.php">Login</a></h5>
+        <h5><a href="signup.php">Register</a></h5>
+      </div>
+      <div class="col-md-3">
+        <h3>Categories:</h3>
+        <h5><a href="vegfoods.php">Veg foods</a></h5>
+        <h5><a href="non-vegfoods.php">Non-veg foods</a></h5>
+        <h5><a href="cooldrinks.php">Cool drinks</a></h5>
+      </div>
+      <div class="col-md-3">
+        <h3>Contact details:</h3>
+        <h5 style="color: white;">EMAIL ID:</h5>
+        <p style="color: white;">kumaresharul2003@gmail.com</p>
+        <h5 style="color: white;">CONTACT NO:</h5>
+        <p style="color: white;">8903507021</p>
+      </div>
+      <div class="col-md-3 social text-center">
+        <h3>Social media links:</h3>
+        <a href="https://www.facebook.com/kumaresh.a.921" target="_blank" class="col-2"><i
+            style="font-size: 35px;color: darkblue;" class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/kumaresharul/" target="_blank" class="col-2"><i
+            style="font-size: 35px;color: darkorchid;" class="bi bi-instagram"></i></a>
+        <a href="https://twitter.com/Kumaresharul007" target="_blank" class="col-2"><i
+            style="font-size: 35px;color: skyblue;" class="bi bi-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/kumaresh-arul-62854321b/" target="_blank" class="col-2"><i
+            style="font-size: 35px;color: darkblue;" class="bi bi-linkedin"></i></a>
+      </div>
+    </div><br>
+    <hr><br>
+    <h5 align="center">created by <b style="color: white;">Kumaresh Arul</b> | &copy;2022</h5>
+  </footer>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
