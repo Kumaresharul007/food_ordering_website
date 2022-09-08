@@ -114,7 +114,7 @@
         $price = $i["price"];
     ?>
     <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="<?php echo $image; ?>" alt="food image">
+      <img class="card-img-top" src="assets/images/<?php echo $image; ?>" alt="food image">
       <div class="card-body">
         <h5 class="card-title">
           <?php echo $name; ?>

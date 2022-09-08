@@ -2,7 +2,7 @@
     margin-left: auto;
 }
 .hero{
-    background: rgba(0, 0, 0, 0.7) url(banner.jpg);
+    background: rgba(0, 0, 0, 0.7) url(assets/images/banner.jpg);
     background-size: cover;
     height: 80vh;
     background-blend-mode: darken;

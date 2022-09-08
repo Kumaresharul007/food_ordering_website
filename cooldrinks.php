@@ -52,7 +52,7 @@
         <?php echo $_SESSION["mail"]; ?>
       </button>
       <ul class="dropdown-menu">
-        <form action="<?php htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" method="POST">
+        <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
           <input class="dropdown-item" type="submit" name="submit" value="Log out">
         </form>
       </ul>
@@ -75,7 +75,7 @@
         $price = $i["price"];
     ?>
     <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="<?php echo $image; ?>" alt="food image">
+      <img class="card-img-top" src="assets/images/<?php echo $image; ?>" alt="food image">
       <div class="card-body">
         <h5 class="card-title">
           <?php echo $name; ?>

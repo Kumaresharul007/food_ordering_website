@@ -85,7 +85,7 @@
   <h2 align="center" style="text-decoration: underline;color: darkgreen;">SEE CATEGORIES:</h2>
   <div class="categories">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="veg.jpg" alt="Card image cap">
+      <img class="card-img-top" src="assets/images/veg.jpg" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">VEG FOODS</h5>
         <p class="card-text">Explore a different varieties of vegetarian foods you love by clicking below.</p>
@@ -93,7 +93,7 @@
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="non-veg.jpg" alt="Card image cap">
+      <img class="card-img-top" src="assets/images/non-veg.jpg" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">NON-VEG FOODS</h5>
         <p class="card-text">Explore a different varieties of non-vegetarian foods you love by clicking below.</p>
@@ -101,7 +101,7 @@
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="cool_drinks.jpg" alt="Card image cap">
+      <img class="card-img-top" src="assets/images/cool_drinks.jpg" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">COOL DRINKS AND BEVERAGES</h5>
         <p class="card-text">Feeling dehydrated? Cool yourself by exploring a different cool drinks by clicking below.

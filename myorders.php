@@ -87,7 +87,7 @@
             $dishprice = $i["price"];
     ?>
     <div class="card" style="width: 20rem;">
-      <a href="dishdetail.php?name=<?php echo $dishname; ?>"><img class="card-img-top" src="<?php echo $dishimage; ?>" alt="Card image cap"></a><br>
+      <a href="dishdetail.php?name=<?php echo $dishname; ?>"><img class="card-img-top" src="assets/images/<?php echo $dishimage; ?>" alt="Card image cap"></a><br>
       <div class="card-body">
         <h5 class="card-title">
           <?php echo $dishname; ?><br><br>
